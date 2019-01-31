@@ -1,5 +1,8 @@
 import io.kotlintest.matchers.collections.shouldContain
+import io.kotlintest.matchers.numerics.shouldBeGreaterThan
 import io.kotlintest.matchers.numerics.shouldBeLessThan
+import io.kotlintest.matchers.numerics.shouldNotBeGreaterThan
+import io.kotlintest.matchers.numerics.shouldNotBeGreaterThanOrEqual
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.DescribeSpec
 
@@ -14,6 +17,11 @@ class BasicsDescribeSpec : DescribeSpec({
                 sum1(0, 3) shouldBe 3
                 sum1(-1, 1) shouldBe 0
                 // Add greater less checks
+                sum1(3, 0) shouldBe 3
+                sum1(a, b) shouldBeGreaterThan 2
+                sum1(-5, 8 ) shouldBe 3
+
+
             }
         }
 
@@ -62,12 +70,42 @@ class BasicsDescribeSpec : DescribeSpec({
             }
         }
 
-        // Write minOff function
+        // 1) Write minOff function
+        //return min value
+        context("function minof"){
+            val max = 100;
+            val min = 0;
+
+            it("return min"){
+                minOf(max,min)shouldBe min
+            }
+            it(""){
+                minOf(2,1)
+            }
+        }
+
+        // 2) Write minOff function
+        //created function which return min value
+        /*  fun minOf(a: Int, b: Int): Int {
+              describe("Return min value of value") {
+                  context("functions") {
+                      it("return min value"){
+              if (a > b) {
+                  return a
+              } else {
+                  return b
+              }
+                      }
+          }
+          */
 
         context("when expression") {
             describe(1) shouldBe "One"
-            describe("hello") shouldBe "Unknown"
+            describe("hello") shouldBe "Greetings"
             // Add other checks
+            describe("long") shouldBe String
+            describe(true) shouldBe Boolean
+            describe("other") shouldBe "Unknown"
         }
 
         context("collections") {
